@@ -24,7 +24,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  vpc_security_group_ids = [vpc-004673c072828bb77]
+  vpc_id = aws_vpc.my_vpc.id
 
   tags = {
       Name = "Terraform-EC2"
