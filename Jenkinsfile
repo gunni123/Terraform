@@ -8,6 +8,7 @@ pipeline {
       env.PATH = "${tfhome}:${env.PATH}"
       }
      sh 'terraform --version'
+     sh 'terraform init'
     }
     }
   }
