@@ -6,7 +6,7 @@ resource "aws_vpc" "my_vpc" {
   }
 }
 resource "aws_instance" "Guna" {
-  ami           = "ami-0e812bbd44d3f6087"
+  ami           = "ami-07957d39ebba800d5"
   instance_type = "t2.micro"
 
   tags = {
