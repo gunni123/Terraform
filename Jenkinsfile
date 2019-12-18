@@ -9,7 +9,7 @@ pipeline {
       }
      sh 'terraform --version'
      sh 'terraform init'
-     sh 'terraform apply --auto-approve'
+     sh 'terraform apply -input=false -auto-approve'
     }
     }
   }
