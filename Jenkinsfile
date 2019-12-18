@@ -4,20 +4,13 @@ pipeline {
             label 'master'
         }
     }
-
     stages {
-
         stage('terraform started') {
             steps {
                 sh 'echo "Started...!" '
             }
         }
-        stage('git clone') {
-            steps {
-                sh 'sudo rm -r *;sudo git clone https://github.com/gunni123/Terraform.git'
-            }
-        }
-        stage('terraform init') {
+         stage('terraform init') {
             steps {
                 sh 'sudo /home/ec2-user/terraform init ./jenkins'
             }
@@ -32,7 +25,5 @@ pipeline {
                 sh 'terraform apply -auto-approve'
             }
         }
-
-        
     }
 }
