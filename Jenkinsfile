@@ -1,9 +1,20 @@
 pipeline {
     agent any
     stages {
-      stage('terraform init') {
+      stage ('Check Terraform Version') {
         steps {
-          sh 'terraform init'
+          script {
+          def tfhome = tool name: 'terraform-18', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
+          env.PATH = "${tfhome}:${env.PATH}"
+        }
+        sh 'terraform --version'
+       }
+      stage('terraform init and apply') {
+        steps {
+          sh '''
+          terraform init
+          terraform apply -input=false --auto-approve
+          '''
         }
       }
     }
